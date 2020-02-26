@@ -35,7 +35,7 @@ All videos contain a trackable mostly frontal face without occlusions which enab
 Click [here](/Experiments_DeepFakeDetection) to go the experiments on DeepFakeDetection.
 
 ### Results
-<img align="center" src="imgs/results.PNG" width="250"/>
+<img align="center" src="imgs/results.PNG" width="500"/>
 
 
 
