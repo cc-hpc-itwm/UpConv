@@ -61,8 +61,7 @@ if args.dataset in ['cifar10', 'fashion_mnist', 'mnist']:  # 32x32
     n_G_upsamplings = n_D_downsamplings = 3
 
 elif args.dataset == 'celeba':  # 64x64
-    #img_paths = py.glob('/home/duralllopez/DATASETS/celebA/img_align_celeba', '*.jpg')
-    img_paths = py.glob('/home/duralllopez/DATASETS/resized_celebA_128/celebA', '*.jpg')
+    img_paths = py.glob('/DATASETS/resized_celebA_128/celebA', '*.jpg')
     data_loader, shape = data.make_celeba_dataset(img_paths, args.batch_size, pin_memory=use_gpu)
     n_G_upsamplings = n_D_downsamplings = 5
 
