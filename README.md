@@ -34,26 +34,15 @@ All videos contain a trackable mostly frontal face without occlusions which enab
 
 Click [here](/Experiments_DeepFakeDetection) to go the experiments on DeepFakeDetection.
 
+
+### CelebA
+ [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) CelebFaces Attributes Dataset (CelebA) is a large-scale face attributes dataset with more than 200K celebrity images, each with 40 attribute annotations. The images in this dataset cover large pose variations and background clutter. CelebA has large diversities, large quantities, and rich annotations
+
+Click [here](/Experiments_CelebA) to go the experiments on CelebA.
+
 ### Results
 <img align="center" src="imgs/results.PNG" width="500"/>
 
-
-
-## Datasets Faces-HQ
-
-This repo uses and combines several datasets to form Faces-HQ:
-
-<img align="center" src="imgs/dataset.png" width="600"/>
-
->We take 10K samples from [CelebA-HQ dataset](https://arxiv.org/abs/1710.10196).
-
->We take 10K samples from [Flickr-Faces-HQ dataset](https://arxiv.org/abs/1812.04948)
-and we convert to JPEG format.
-
->We take 10K samples from [www.thispersondoesnotexist.com](www.thispersondoesnotexist.com) uisng this
-[script](https://github.com/rayheffer/tpdne/blob/master/tpdne.sh)
-
->We take 10K samples from [100K Facesproject](https://generated.photos/).
 
 ### Download full (19GB) Faces-HQ data set: [https://cutt.ly/6enDLYG](https://cutt.ly/6enDLYG)
 
