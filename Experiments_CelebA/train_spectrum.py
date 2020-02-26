@@ -103,7 +103,6 @@ print(D)
 d_loss_fn, g_loss_fn = gan.get_adversarial_losses_fn(args.adversarial_loss_mode)
 
 criterion_freq = nn.BCELoss()
-datalossBCE = []
 
 # optimizer
 G_optimizer = torch.optim.Adam(G.parameters(), lr=args.lr, betas=(args.beta_1, 0.999))
@@ -177,7 +176,6 @@ def train_D(x_real):
 
 
     loss_freq = criterion_freq(psd1D_rec,psd1D_img)
-    datalossBCE.append(loss_freq.data)
 
     x_real_d_logit = D(x_real)
     x_fake_d_logit = D(x_fake)
@@ -256,5 +254,3 @@ for ep_ in tqdm.trange(args.epochs, desc='Epoch Loop'):
                               'G_optimizer': G_optimizer.state_dict()},
                              py.join(ckpt_dir, 'Epoch_(%d).ckpt' % ep),
                              max_keep=args.epochs)
-
-    np.save("15_BCElossDCGAN.npy",datalossBCE)
