@@ -1,6 +1,6 @@
 # [Watch your Up-Convolution: CNN Based Generative Deep Neural Networks are Failing to Reproduce Spectral Distributions](https://arxiv.org/abs/1911.00686)
 
-This repository provides the official Python implementation ofWatch your Up-Convolution: CNN Based Generative Deep Neural Networks are Failing to Reproduce Spectral Distributions (Paper: [https://arxiv.org/abs/1911.00686](https://arxiv.org/abs/1911.00686)).
+This repository provides the official Python implementation of Watch your Up-Convolution: CNN Based Generative Deep Neural Networks are Failing to Reproduce Spectral Distributions (Paper: [https://arxiv.org/abs/1911.00686](https://arxiv.org/abs/1911.00686)).
 
 <img align="center" src="imgs/pipeline.png" width="1000"/>
 
@@ -35,7 +35,7 @@ All videos contain a trackable mostly frontal face without occlusions which enab
 Click [here](/Experiments_DeepFakeDetection) to go the experiments on DeepFakeDetection.
 
 ### Results
-<img align="center" src="imgs/results.png" width="250"/>
+<img align="center" src="imgs/results.PNG" width="250"/>
 
 
 
