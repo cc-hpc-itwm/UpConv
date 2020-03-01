@@ -2,11 +2,14 @@
 
 This repository provides the official Python implementation of Watch your Up-Convolution: CNN Based Generative Deep Neural Networks are Failing to Reproduce Spectral Distributions (Paper: [https://arxiv.org/abs/1911.00686](https://arxiv.org/abs/1911.00686)).
 
-<img align="center" src="imgs/pipeline.png" width="1000"/>
+<img align="center" src="imgs/celeba.png" width="1000"/>
 
-Overview of the pipeline used in our approach. It contains two main blocks, a pre-processing where the input is transformed to a more convenient domain and a training block, where a classifier uses the new transformed features to determine whether the face is real or not. Notice that input images are grey-scaled
-before DFT.
-
+Common up-convolution methods are inducing
+heavy spectral distortions into generated images. (Left)
+Statistics (mean and variance) after azimuthal
+integration over the power-spectrum of real and GAN generated images. 
+(Right) Results of the same experiments as above, adding
+our proposed spectral loss during GAN training.
 
 ## Dependencies
 Tested on Python 3.6.x.
