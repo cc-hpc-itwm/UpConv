@@ -53,6 +53,8 @@ Make the following changes to incorporate the regularizer. Then, train the model
   <li>Substitue module.py for module_spectrum.py</li>
 </ul>  
 
+Click [here](/Experiments_Codes) to go the Regularization implementation.
+
 ##  Citation
 If this work is useful for your research, please cite our [paper](https://arxiv.org/abs/1911.00686):
 ```
