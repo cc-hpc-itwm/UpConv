@@ -13,7 +13,10 @@ our proposed spectral loss during GAN training.
 
 ## Spectral Regularization
 
-<img align="center" src="imgs/regularization.PNG" width="1000"/>
+<p align='center'>  
+    <img align="center" src="imgs/regularization.PNG" width="500"/>
+</p>
+
 
 Schematic overview of the simple auto encoder
 (AE) setup used to demonstrate the effects of upconvolutions
@@ -29,7 +32,10 @@ We evaluate the findings of the previous sections in three
 different experiments, using prominent GAN architectures
 on public face generation datasets.
 
-<img align="center" src="imgs/formula.PNG" width="200"/>
+<p align='center'>  
+    <img align="center" src="imgs/formula.PNG" width="300"/>
+</p>
+
 
 
 ## Dependencies
