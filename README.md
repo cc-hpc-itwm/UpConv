@@ -44,7 +44,7 @@ Link to download [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) data
 ## Training Netwroks
 
 ### Training vanilla models
-We train different GAN models using this [repo] (https://github.com/LynnHo/DCGAN-LSGAN-WGAN-GP-DRAGAN-Pytorch). Then, we employ our Visualization script to analyse the frequency behaviour.
+We train different GAN models using this [repo](https://github.com/LynnHo/DCGAN-LSGAN-WGAN-GP-DRAGAN-Pytorch). Then, we employ our Visualization script to analyse the frequency behaviour.
 
 ### Training Spectral Regularization models
 Make the following changes to incorporate the regularizer. Then, train the model.
