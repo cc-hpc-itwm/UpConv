@@ -4,47 +4,17 @@ This repository provides the official Python implementation of Watch your Up-Con
 
 <img align="center" src="imgs/pipeline.png" width="1000"/>
 
-Overview of the pipeline used in our approach. It contains two main blocks, a pre-processing where the input is transformed to a more convenient domain and a
-training block, where a classifier uses the new transformed features to determine whether the face is real or not. Notice that input images are grey-scaled
+Overview of the pipeline used in our approach. It contains two main blocks, a pre-processing where the input is transformed to a more convenient domain and a training block, where a classifier uses the new transformed features to determine whether the face is real or not. Notice that input images are grey-scaled
 before DFT.
+
 
 ## Dependencies
 Tested on Python 3.6.x.
+* [Pytorch](https://pytorch.org/get-started/previous-versions/) (1.1.0)
 * [NumPy](http://www.numpy.org/) (1.16.2)
 * [Opencv](https://opencv.org/opencv-4-0/) (4.0.0)
 * [Matplotlib](https://matplotlib.org/) (3.1.1)
 
-
-## Experimental Evaluation
-
-### Faces-HQ
-To the best of our knowledge, no public dataset gathers images containing both artificially and real faces, therefore, we have created our own called Faces-HQ.
-In order to have a sufficient variety of faces, we have chosen to download and label, images available from [CelebA-HQ dataset](https://arxiv.org/abs/1710.10196),
-[Flickr-Faces-HQ dataset](https://arxiv.org/abs/1812.04948), [100K Facesproject](https://generated.photos/) and [www.thispersondoesnotexist.com](www.thispersondoesnotexist.com).
-In total, we have collected 40K high quality images being half of them real and the other half fake faces, achieving in this manner a balanced dataset.
-
-Click [here](/Experiments_Faces-HQ) to go the experiments on Faces-HQ.
-
-
-### DeepFakeDetection (FaceForensics++)
- [FaceForensics++](https://github.com/ondyari/FaceForensics) is a forensics dataset consisting of video sequences that have been modified with
-different automated face manipulation methods. Additionally,it is hosting DeepFakeDetection Dataset. In particular, this dataset contains 363 original
-sequences from 28 paid actors in 16 different scenes as well as over 3000 manipulated videos using DeepFakes and their corresponding binary masks.
-All videos contain a trackable mostly frontal face without occlusions which enables automated tampering methods to generate realistic forgeries.
-
-Click [here](/Experiments_DeepFakeDetection) to go the experiments on DeepFakeDetection.
-
-
-### CelebA
- [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) CelebFaces Attributes Dataset (CelebA) is a large-scale face attributes dataset with more than 200K celebrity images, each with 40 attribute annotations. The images in this dataset cover large pose variations and background clutter. CelebA has large diversities, large quantities, and rich annotations
-
-Click [here](/Experiments_CelebA) to go the experiments on CelebA.
-
-### Results
-<img align="center" src="imgs/results.PNG" width="500"/>
-
-
-### Download full (19GB) Faces-HQ data set: [https://cutt.ly/6enDLYG](https://cutt.ly/6enDLYG)
 
 
 ###  Citation
