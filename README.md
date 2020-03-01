@@ -11,6 +11,27 @@ integration over the power-spectrum of real and GAN generated images.
 (Right) Results of the same experiments as above, adding
 our proposed spectral loss during GAN training.
 
+## Spectral Regularization
+
+<img align="center" src="imgs/regularization.PNG" width="1000"/>
+
+Schematic overview of the simple auto encoder
+(AE) setup used to demonstrate the effects of upconvolutions
+in Figure 5, using only a standard MSE reconstruction
+loss (bottom) to train the AE on real images.
+We down-scale the input by a factor of two and then use the
+different up-convolution methods to reconstruct the original
+image size. 
+
+## Experimental Evaluation
+
+We evaluate the findings of the previous sections in three
+different experiments, using prominent GAN architectures
+on public face generation datasets.
+
+<img align="center" src="imgs/formula.PNG" width="200"/>
+
+
 ## Dependencies
 Tested on Python 3.6.x.
 * [Pytorch](https://pytorch.org/get-started/previous-versions/) (1.1.0)
