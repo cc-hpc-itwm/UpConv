@@ -25,6 +25,9 @@ directly. Hence, we extend existing GAN architectures in two ways:
     <img align="center" src="imgs/formula.PNG" width="300"/>
     </p>
   <li>Replace last last up-convolution unit.</li>
+    <p align='center'>  
+    <img align="center" src="imgs/formula2.png" width="300"/>
+    </p>
 </ul>  
 
 ## Dependencies
