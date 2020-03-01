@@ -37,9 +37,21 @@ Tested on Python 3.6.x.
 * [Opencv](https://opencv.org/opencv-4-0/) (4.0.0)
 * [Matplotlib](https://matplotlib.org/) (3.1.1)
 
+## Downloading Dataset
+To download the CelebA dataset:
 
+Link to download [CelebA dataset](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
 
-###  Citation
+## Training Netwroks
+
+### Training vanilla models
+We train different GAN models using this [repo] (https://github.com/LynnHo/DCGAN-LSGAN-WGAN-GP-DRAGAN-Pytorch). Then, we employ our Visualization script to analyse the frequency behaviour.
+
+### Training Spectral Regularization models
+From the vanilla models, substitue train.py for train_spectrum.py and module.py for module_spectrum.py.
+<img align="center" src="/imgs/1000_spectral.png" width="800"/>
+
+##  Citation
 If this work is useful for your research, please cite our [paper](https://arxiv.org/abs/1911.00686):
 ```
 @misc{durall2019unmasking,
