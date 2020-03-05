@@ -1,6 +1,6 @@
-# [Watch your Up-Convolution: CNN Based Generative Deep Neural Networks are Failing to Reproduce Spectral Distributions](https://arxiv.org/abs/1911.00686)
+# [Watch your Up-Convolution: CNN Based Generative Deep Neural Networks are Failing to Reproduce Spectral Distributions](https://arxiv.org/abs/2003.01826)
 
-This repository provides the official Python implementation of Watch your Up-Convolution: CNN Based Generative Deep Neural Networks are Failing to Reproduce Spectral Distributions (Paper: [https://arxiv.org/abs/1911.00686](https://arxiv.org/abs/1911.00686)).
+This repository provides the official Python implementation of Watch your Up-Convolution: CNN Based Generative Deep Neural Networks are Failing to Reproduce Spectral Distributions (Paper: [https://arxiv.org/abs/2003.01826](https://arxiv.org/abs/2003.01826)).
 
 <img align="center" src="imgs/celeba.png" width="1000"/>
 
@@ -55,14 +55,19 @@ Make the following changes to incorporate the regularizer. Then, train the model
 
 Click [here](/Experiments_Codes) to go the Regularization implementation.
 
-##  Citation
-If this work is useful for your research, please cite our [paper](https://arxiv.org/abs/1911.00686):
+# Deepfake detection
+Experiments and code for the deepfake detection parts of the paper can be found in the repository of our prior Arxiv pre-print. 
+* Paper: [https://arxiv.org/abs/1911.00686](https://arxiv.org/abs/1911.00686)
+* Code: [https://github.com/cc-hpc-itwm/DeepFakeDetection](https://github.com/cc-hpc-itwm/DeepFakeDetection)
+
+#  Citation
+If this work is useful for your research, please cite our [paper](https://arxiv.org/abs/2003.01826):
 ```
-@misc{durall2019unmasking,
-    title={Unmasking DeepFakes with simple Features},
-    author={Ricard Durall and Margret Keuper and Franz-Josef Pfreundt and Janis Keuper},
-    year={2019},
-    eprint={1911.00686},
+@misc{durall2020upconv,
+    title={Watch your Up-Convolution: CNN Based Generative Deep Neural Networks are Failing to Reproduce Spectral Distributions},
+    author={Ricard Durall and Margret Keuper and Janis Keuper},
+    year={2020},
+    eprint={2003.01826},
     archivePrefix={arXiv},
     primaryClass={cs.LG}
 }
