@@ -29,12 +29,13 @@ py.arg('--n_d', type=int, default=1)  # # d updates per g update
 py.arg('--z_dim', type=int, default=128)
 py.arg('--adversarial_loss_mode', default='gan', choices=['gan', 'hinge_v1', 'hinge_v2', 'lsgan', 'wgan'])
 py.arg('--gradient_penalty_mode', default='none', choices=['none', 'dragan', 'dragan-lp', 'wgan-gp', 'wgan-lp'])
+py.arg('--gradient_penalty_sample_mode', default='line', choices=['line', 'real', 'fake', 'dragan'])
 py.arg('--gradient_penalty_weight', type=float, default=10.0)
 py.arg('--experiment_name', default='none')
 py.arg('--gradient_penalty_d_norm', default='layer_norm', choices=['instance_norm', 'layer_norm'])  # !!!
 args = py.args()
 
-N = 88
+N = 43
 epsilon = 1e-8
 
 # output_dir
@@ -61,9 +62,9 @@ if args.dataset in ['cifar10', 'fashion_mnist', 'mnist']:  # 32x32
     n_G_upsamplings = n_D_downsamplings = 3
 
 elif args.dataset == 'celeba':  # 64x64
-    img_paths = py.glob('/DATASETS/resized_celebA_128/celebA', '*.jpg')
+    img_paths = py.glob('data/img_align_celeba', '*.jpg')
     data_loader, shape = data.make_celeba_dataset(img_paths, args.batch_size, pin_memory=use_gpu)
-    n_G_upsamplings = n_D_downsamplings = 5
+    n_G_upsamplings = n_D_downsamplings = 4
 
 elif args.dataset == 'anime':  # 64x64
     img_paths = py.glob('data/faces', '*.jpg')
@@ -180,7 +181,7 @@ def train_D(x_real):
     x_fake_d_logit = D(x_fake)
 
     x_real_d_loss, x_fake_d_loss = d_loss_fn(x_real_d_logit, x_fake_d_logit)
-    gp = gan.gradient_penalty(functools.partial(D), x_real, x_fake, mode=args.gradient_penalty_mode)
+    gp = gan.gradient_penalty(functools.partial(D), x_real, x_fake, gp_mode=args.gradient_penalty_mode, sample_mode=args.gradient_penalty_sample_mode)
 
     D_loss = (x_real_d_loss + x_fake_d_loss) + gp * args.gradient_penalty_weight +15*loss_freq
 
