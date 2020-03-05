@@ -23,7 +23,7 @@ class ConvGenerator(nn.Module):
     def __init__(self,
                  input_dim=128,
                  output_channels=3,
-                 dim=32,
+                 dim=64,
                  n_upsamplings=4,
                  norm='batch_norm'):
         super().__init__()
@@ -40,13 +40,13 @@ class ConvGenerator(nn.Module):
         layers = []
 
         # 1: 1x1 -> 4x4
-        d = min(dim * 2 ** (n_upsamplings - 1), dim * 16)
+        d = min(dim * 2 ** (n_upsamplings - 1), dim * 8)
         layers.append(dconv_norm_relu(input_dim, d, kernel_size=4, stride=1, padding=0))
 
         # 2: upsamplings, 4x4 -> 8x8 -> 16x16 -> ...
         for i in range(n_upsamplings - 1):
             d_last = d
-            d = min(dim * 2 ** (n_upsamplings - 2 - i), dim * 16)
+            d = min(dim * 2 ** (n_upsamplings - 2 - i), dim * 8)
             layers.append(dconv_norm_relu(d_last, d, kernel_size=4, stride=2, padding=1))
 
         #layers.append(nn.ConvTranspose2d(d, d, kernel_size=4, stride=2, padding=1))
@@ -68,7 +68,7 @@ class ConvDiscriminator(nn.Module):
 
     def __init__(self,
                  input_channels=3,
-                 dim=32,
+                 dim=64,
                  n_downsamplings=4,
                  norm='batch_norm'):
         super().__init__()
