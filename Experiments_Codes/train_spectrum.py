@@ -137,7 +137,6 @@ def train_G():
 def train_D(x_real):
     G.train()
     D.train()
-    
 
     z = torch.randn(args.batch_size, args.z_dim, 1, 1).to(device)
     x_fake = G(z).detach()
