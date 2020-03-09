@@ -9,6 +9,7 @@ from torch import nn
 import torchlib
 import torchprob as gan
 import tqdm
+from torch.autograd import Variable
 
 import data
 import module_spectrum as module
@@ -156,6 +157,7 @@ def train_D(x_real):
         psd1D_img[t,:] = psd1D
     
     psd1D_img = torch.from_numpy(psd1D_img).float()
+    psd1D_img = Variable(psd1D_img, requires_grad=True).to(device)
         
     # real image 1d power spectrum
     psd1D_rec = np.zeros([x_real.shape[0], N])
@@ -172,9 +174,9 @@ def train_D(x_real):
         psd1D_rec[t,:] = psd1D
             
     psd1D_rec = torch.from_numpy(psd1D_rec).float()
+    psd1D_rec = Variable(psd1D_rec, requires_grad=True).to(device)
 
-
-    loss_freq = criterion_freq(psd1D_rec,psd1D_img)
+    loss_freq = criterion_freq(psd1D_rec,psd1D_img.detach())
 
     x_real_d_logit = D(x_real)
     x_fake_d_logit = D(x_fake)
@@ -182,7 +184,7 @@ def train_D(x_real):
     x_real_d_loss, x_fake_d_loss = d_loss_fn(x_real_d_logit, x_fake_d_logit)
     gp = gan.gradient_penalty(functools.partial(D), x_real, x_fake, mode=args.gradient_penalty_mode)
 
-    D_loss = (x_real_d_loss + x_fake_d_loss) + gp * args.gradient_penalty_weight +15*loss_freq
+    D_loss = (x_real_d_loss + x_fake_d_loss) + gp * args.gradient_penalty_weight +2*loss_freq
 
     D.zero_grad()
     D_loss.backward()
