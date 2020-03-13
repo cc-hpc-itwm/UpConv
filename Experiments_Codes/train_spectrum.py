@@ -117,7 +117,7 @@ def RGB2gray(rgb):
 # =                                 train step                                 =
 # ==============================================================================
 
-def train_G():
+def train_G(x_real):
     G.train()
     D.train()
 
@@ -125,21 +125,7 @@ def train_G():
     x_fake = G(z)
 
     x_fake_d_logit = D(x_fake)
-    G_loss = g_loss_fn(x_fake_d_logit)
-
-    G.zero_grad()
-    G_loss.backward()
-    G_optimizer.step()
-
-    return {'g_loss': G_loss}
-
-
-def train_D(x_real):
-    G.train()
-    D.train()
-
-    z = torch.randn(args.batch_size, args.z_dim, 1, 1).to(device)
-    x_fake = G(z).detach()
+    g_loss = g_loss_fn(x_fake_d_logit)
     
     # fake image 1d power spectrum
     psd1D_img = np.zeros([x_fake.shape[0], N])
@@ -176,6 +162,23 @@ def train_D(x_real):
     psd1D_rec = Variable(psd1D_rec, requires_grad=True).to(device)
 
     loss_freq = criterion_freq(psd1D_rec,psd1D_img.detach())
+    datalossBCE.append(loss_freq.data)
+    
+    G_loss = loss_freq + g_loss
+    
+    G.zero_grad()
+    G_loss.backward()
+    G_optimizer.step()
+
+    return {'g_loss': G_loss}
+
+
+def train_D(x_real):
+    G.train()
+    D.train()
+
+    z = torch.randn(args.batch_size, args.z_dim, 1, 1).to(device)
+    x_fake = G(z).detach()
 
     x_real_d_logit = D(x_real)
     x_fake_d_logit = D(x_fake)
@@ -183,8 +186,8 @@ def train_D(x_real):
     x_real_d_loss, x_fake_d_loss = d_loss_fn(x_real_d_logit, x_fake_d_logit)
     gp = gan.gradient_penalty(functools.partial(D), x_real, x_fake, mode=args.gradient_penalty_mode)
 
-    D_loss = (x_real_d_loss + x_fake_d_loss) + gp * args.gradient_penalty_weight +2*loss_freq
-
+    D_loss = (x_real_d_loss + x_fake_d_loss) + gp * args.gradient_penalty_weight
+    
     D.zero_grad()
     D_loss.backward()
     D_optimizer.step()
@@ -236,7 +239,7 @@ for ep_ in tqdm.trange(args.epochs, desc='Epoch Loop'):
         it_d += 1
 
         if it_d % args.n_d == 0:
-            G_loss_dict = train_G()
+            G_loss_dict = train_G(x_real)
             it_g += 1
 
         # sample
