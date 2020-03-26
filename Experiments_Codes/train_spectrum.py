@@ -23,8 +23,9 @@ import radialProfile
 # command line
 py.arg('--dataset', default='celeba', choices=['cifar10', 'fashion_mnist', 'mnist', 'celeba', 'anime', 'custom'])
 py.arg('--batch_size', type=int, default=64)
-py.arg('--epochs', type=int, default=25)
+py.arg('--epochs', type=int, default=10)
 py.arg('--lr', type=float, default=0.0002)
+py.arg('--lambda_freq', type=float, default=1e-5)
 py.arg('--beta_1', type=float, default=0.5)
 py.arg('--n_d', type=int, default=1)  # # d updates per g update
 py.arg('--z_dim', type=int, default=128)
@@ -162,9 +163,9 @@ def train_G(x_real):
     psd1D_rec = Variable(psd1D_rec, requires_grad=True).to(device)
 
     loss_freq = criterion_freq(psd1D_rec,psd1D_img.detach())
-    datalossBCE.append(loss_freq.data)
+    loss_freq *= g_loss
     
-    G_loss = loss_freq + g_loss
+    G_loss = g_loss + args.lambda_freq*loss_freq
     
     G.zero_grad()
     G_loss.backward()
